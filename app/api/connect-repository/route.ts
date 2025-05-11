@@ -7,14 +7,14 @@ const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:8000';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { repoUrl, requirementsFolder } = body;
+    const { repoUrl } = body;
 
     const response = await fetch(`${BACKEND_URL}/connect-repository`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ repoUrl, requirementsFolder }),
+      body: JSON.stringify({ repoUrl }),
     });
 
     const data: BackendResponse = await response.json();

@@ -14,7 +14,6 @@ interface RepoFormProps {
 
 export function RepoForm({ onSubmit }: RepoFormProps) {
   const [repoUrl, setRepoUrl] = useState("");
-  const [requirementsFolder, setRequirementsFolder] = useState("");
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -34,7 +33,7 @@ export function RepoForm({ onSubmit }: RepoFormProps) {
     }
     
     setError(null);
-    onSubmit({ repoUrl, requirementsFolder });
+    onSubmit({ repoUrl });
   };
 
   return (
@@ -42,7 +41,7 @@ export function RepoForm({ onSubmit }: RepoFormProps) {
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl">Repository Information</CardTitle>
         <CardDescription>
-          Enter the GitHub repository URL and the folder containing requirements
+          Enter the GitHub repository URL to analyze requirements
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -60,21 +59,6 @@ export function RepoForm({ onSubmit }: RepoFormProps) {
               />
             </div>
             {error && <p className="text-sm text-destructive">{error}</p>}
-          </div>
-          
-          <div className="space-y-2">
-            <Label htmlFor="requirements-folder">
-              Requirements Folder Path (optional)
-            </Label>
-            <Input
-              id="requirements-folder"
-              placeholder="docs/requirements"
-              value={requirementsFolder}
-              onChange={(e) => setRequirementsFolder(e.target.value)}
-            />
-            <p className="text-sm text-muted-foreground">
-              Leave empty to search in the root directory
-            </p>
           </div>
           
           <Button 

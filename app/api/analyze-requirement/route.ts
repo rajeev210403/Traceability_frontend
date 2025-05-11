@@ -7,14 +7,14 @@ const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:8000';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { requirement, repoUrl, requirementsFolder } = body;
+    const { requirement, repoUrl } = body;
 
     const response = await fetch(`${BACKEND_URL}/analyze-requirement`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ requirement, repoUrl, requirementsFolder }),
+      body: JSON.stringify({ requirement, repoUrl }),
     });
 
     const data: BackendResponse = await response.json();

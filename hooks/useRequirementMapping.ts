@@ -56,7 +56,6 @@ export const useRequirementMapping = () => {
         body: JSON.stringify({
           requirement,
           repoUrl: repositoryInfo.repoUrl,
-          requirementsFolder: repositoryInfo.requirementsFolder,
         }),
       });
 

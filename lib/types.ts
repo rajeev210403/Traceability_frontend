@@ -1,6 +1,5 @@
 export interface RepositoryInfo {
   repoUrl: string;
-  requirementsFolder: string;
 }
 
 export interface RequirementFile {
